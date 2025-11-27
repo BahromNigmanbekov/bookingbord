@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // ✅ router
 import "./users.css";
 import { FaCheck } from "react-icons/fa";
-import Modal from '../madal/Modal';
+import Modal from '../../components/madal/Modal';
 import { deleteUsers, getUsers, putUsers, postUsers } from '../../api/UsersData';
 import { MdEdit } from "react-icons/md";
 import { FaUser, FaPlusCircle } from "react-icons/fa";
