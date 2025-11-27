@@ -65,6 +65,7 @@ tr:hover {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    gap: 20px;
 }
 
 .btn_d , .btn_e{
@@ -109,6 +110,7 @@ tr:hover {
 
 .open {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 8px;
     background: rgba(255,255,255,0.05);
@@ -160,6 +162,26 @@ tr:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
+.logout-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    border-radius: 12px;
+    color: white;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid #30363d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #f85149;
+}
 
 .user_card, .time_card, .date_card {
     display: flex;

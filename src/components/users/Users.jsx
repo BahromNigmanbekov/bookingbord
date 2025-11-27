@@ -8,6 +8,7 @@ import { MdEdit } from "react-icons/md";
 import { FaUser, FaPlusCircle } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { FaCalendar } from "react-icons/fa";
+import { ImExit } from "react-icons/im";
 
 function Users() {
     const navigate = useNavigate();
@@ -152,7 +153,7 @@ function Users() {
                 <div className="">
                     <div className="just_btn">
                         <button onClick={()=> setOpenMadal(true)} className='open'>Add User <FaPlusCircle /></button>
-                        <button onClick={handleLogout} className='logout-btn'>Chiqish</button>
+                        <button onClick={handleLogout} className='logout-btn'>Exit <ImExit /></button>
                     </div>
 
                     <Modal isOpen ={openMadal} setIsOpen={setOpenMadal}>
