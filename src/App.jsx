@@ -1,36 +1,25 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Header from './components/header/Header'
-import Sidebar from './components/sidebar/Sidebar'
-import Users from './components/users/Users'
+import { Routes, Route } from "react-router-dom";
+import Header from './components/header/Header';
+import Sidebar from './components/sidebar/Sidebar';
+import Users from './components/users/Users';
+import Login from './pages/login/Login'; // ✅ Login page (keyin yaratamiz)
+import './App.css';
 
 function App() {
-//  const [data , setData] = useState(null)
-
-  // useEffect(() => {
-  //   fetch("https://68a86bc3bb882f2aa6de805f.mockapi.io/ap/v1/users")
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     setData(res)
-      
-  //   })
-  //   .catch(err => console.log(err));
-  // }, [])
-
   return (
     <>
-   <Header/>
-   <main>
-   {/* <Sidebar/>  */}
-   <div className="container">
-    <Users/>
-   </div>
-   </main>
-   
+      <Header/>
+      <main>
+        {/* <Sidebar/> */}
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/users" element={<Users />} />
+          </Routes>
+        </div>
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
