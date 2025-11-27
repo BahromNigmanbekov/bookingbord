@@ -5,7 +5,7 @@ function Header() {
     <>
       
         <div class="loader">
-          <h1>Bookingbord</h1>
+          <h1>Booking</h1>
   <svg width="100" height="100" viewBox="0 0 100 100">
     <defs>
       <mask id="clipping">
@@ -19,7 +19,9 @@ function Header() {
       </mask>
     </defs>
   </svg>
+  
   <div class="box"></div>
+  <h1>Bord</h1>
 </div>
 
 
