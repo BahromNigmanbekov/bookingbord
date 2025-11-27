@@ -9,6 +9,7 @@ import { MdEdit } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { FaCalendar } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
 
 function Users() {
     const [data , setData] = useState([]);
@@ -75,7 +76,7 @@ function Users() {
                     </div>
                     
                     <div className='time_card'>
-                        <span className='time_ic'><IoTime /></span>
+                        <span className='time_ic'> <IoTime /></span>
                         <p className='vaqt'>{user.age}</p>
                     </div>
                     
@@ -135,8 +136,8 @@ function Users() {
                      required={true}
                         />
 
-
-                        <button type="submit" className='edit-button'>edit user</button>
+                        <br /><button type="submit" className='edi_user' >edit user</button>
+                        
                             </form>
 
                         </Modal>
@@ -169,7 +170,7 @@ function Users() {
     <>
         <section className='users'>
             <div className="">
-                <button onClick={()=> setOpenMadal(true)} className='open'>open Madal</button>
+                <div className="just_btn"><button onClick={()=> setOpenMadal(true)} className='open'>Add User <FaPlusCircle /></button></div>
                 <Modal isOpen ={openMadal} setIsOpen={setOpenMadal}>
                     <form onSubmit={handlSubmit} action="" className='form-user'>
                     <input

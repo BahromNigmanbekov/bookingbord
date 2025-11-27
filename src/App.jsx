@@ -24,7 +24,9 @@ function App() {
    <Header/>
    <main>
    {/* <Sidebar/>  */}
-   <Users/>
+   <div className="container">
+    <Users/>
+   </div>
    </main>
    
     </>

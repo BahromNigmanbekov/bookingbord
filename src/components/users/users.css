@@ -1,296 +1,212 @@
-.users{
+/* =======================================
+   RESPONSIVE GITHUB DARK THEME – UPDATED
+======================================= */
+
+
+.users {
     width: 100%;
     padding: 20px;
-    background-color: white;
-    color: black;
+    background-color: transparent;
+    margin-top: 70px;
 }
 
-table , th , td , thead , tbody{
-    border: 1px solid black;
-    padding: 5px 10px;
-}
 
-table{
+table {
     width: 100%;
-    box-shadow: 0px 0px 5px #ccc;
     border-collapse: collapse;
-    text-align: left;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
 }
 
-.user-madal{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.user-input{
-    width: 100%;
-    padding: 20px;
-    margin-top: 20px;
-    box-shadow:0px 0px 5px #ccc;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+table th {
+    background-color: #161b22;
+    color: #c9d1d9;
+    border-bottom: 1px solid #30363d;
+    padding: 12px 10px;
+    font-weight: 600;
     font-size: 16px;
-}
-.add-button{
-    width: 100%;
-    padding: 10px 15px;
-    background-color:rgb(32, 54, 85) ;
-    color: white;
-    margin-top: 20px;
-    border: none;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
 }
 
-.user-input:focus{
+table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #21262d;
+    font-size: 15px;
+}
+
+tr:hover {
+    background-color: rgba(240, 246, 252, 0.05);
+    transition: 0.2s;
+}
+
+
+.user-input {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    color: #c9d1d9;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.user-input:focus {
+    border-color: #58a6ff;
+    box-shadow: 0 0 4px #58a6ff90;
     outline: none;
-    border: 2px solid #0069d9;
-    box-shadow: 0px 0px 8px #1d006cc3;
 }
 
-button:hover{
-    background-color:rgb(0, 0, 0) ;
-    opacity: 0.9;
-}
-.close{
-    width: 20%;
-    padding: 10px 15px;
-    margin-left: 00px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    background-color: #dc3545;
-}
-.close:hover{
-    background-color: #c82333;
-}
-.open{
-    background-color: #007bff;
-    margin-bottom: 10px;
-    border: none;
-    padding: 10px 15px;
-    font-size: 12px;
-    color: white;
-    border-radius: 10px;
-}
-.open:hover{
-    background-color: #0069d9;
-}
-.user-actions{
+.just_btn{
     display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.btn_d , .btn_e{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+
+.add-button,
+.close,
+.open,
+.btn_d,
+.btn_e,
+.user-action-edit,
+.user-action-delete {
+    border-radius: 8px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 18px;
+    transition: 0.2s ease;
+}
+
+
+.add-button {
+    background-color: #238636;
+}
+.add-button:hover {
+    background-color: #2ea043;
+}
+
+.close {
+    background-color: #da3633;
+}
+.close:hover {
+    background-color: #f85149;
+}
+
+.open {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid #30363d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+.open:hover {
+    background-color: #388bfd;
+}
+
+.btn_d,
+.user-action-delete {
+    background-color: #15008e;
+}
+.btn_d:hover,
+.user-action-delete:hover {
+    background-color: #40008a;
+}
+
+.btn_e,
+.user-action-edit {
+    background-color: #d29922;
+}
+.btn_e:hover,
+.user-action-edit:hover {
+    background-color: #e3b341;
+}
+
+.delete_td{
+    display: flex;
+    align-items: center;
     gap: 10px;
 }
-.user-action-edit{
-    background-color: #ffc107;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-}
-.user-action-edit:hover{
-    background-color: #e0a800;
-}
-.user-action-delete{
-    background-color: #dc3545;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-}
 
-.btn_d {
+.ul_list {
     display: flex;
     align-items: center;
-    gap: 5px;
-    justify-content: center;
-    width: 100px;
-    background-color: #0a094e;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-}
-.btn_d:hover{
-    background-color: #0f085a;
-}
-
-.btn_e{
-    width: 100px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    justify-content: center;
-    background-color: #ffc107;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-}
-
-.btn_e:hover{
-    background-color: #e0a800;
-}
-
-.delete_td , .edit_td{
-    width: 50px;
-}
-
-.edit_th{
-    background-color: #e0a800;
-    color: white;
-}
-
-.delete_th{
-    background-color: #c82333;
-    color: white;
-}
-
-.ul_list{
-    display: flex;
-    align-items: center;
-    gap: 60px;
+    justify-content: space-between;
+    gap: 50px;
     padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 19px;
+    border-radius: 12px;
+    margin-bottom: 20px;
 
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-
-
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid #30363d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
+
 
 .user_card, .time_card, .date_card {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.user_card{
-    width: 400px;
-}
 
-.time_card{
-    width: 200px;
-}
-
-.date_card{
-    width: 350px;
-}
-
-.vaqt{
-    background-color: #007bff;
+.ism {
+    font-weight: 600;
+    background: #15008e;
+    padding: 6px 14px;
     color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
-.ism{
+.vaqt {
+    padding: 6px 14px;
+    color: white;
+    border-radius: 6px;
+}
+
+.sana {
+    padding: 6px 14px;
+    color: white;
+    border-radius: 6px;
+}
+
+.id {
+    background: #8b949e;
+    padding: 6px 14px;
+    color: #0d1117;
+    border-radius: 6px;
     font-weight: bold;
-    background-color: #ff8000;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.sana{
-    background-color: #28a745;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-
-.id{
-    font-weight: bold;
-    background-color: #6c757d;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.delete_td{
-    width: 250px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.user_ic, .time_ic, .date_ic{
-    font-size: 24px;
-    color: #333;
 }
 
 
 @media (max-width: 768px) {
-
-    .users {
-        padding: 20px;
-    }
-
-    table, th, td {
-        font-size: 14px;  /* → Shirift kattalashdi */
-        padding: 6px;
-    }
-
-    table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .user-input {
-        padding: 10px;
-        font-size: 15px;  /* → Kattaroq text */
-    }
-
-    .add-button {
-        padding: 16px;
-        font-size: 16px; /* → Kattaroq */
+    .container {
         width: 100%;
-    }
-
-    /* =======================
-       DELETE + EDIT YONMA-YON
-       ======================= */
-    .user-actions {
-        display: flex;
-        flex-direction: row;   /* → Yonma-yon */
-        width: 100%;
-        gap: 10px;
-    }
-
-    .user-action-edit,
-    .user-action-delete {
-        width: 50%;           /* → Bir xil width */
-        font-size: 16px;      /* → Kattaroq text */
-        padding: 12px;
-    }
-
-    .btn_d,
-    .btn_e {
-        width: 100%;
-        font-size: 15px;
-        padding: 12px;
-    }
-
-    .close,
-    .open {
-        width: 100%;
-        font-size: 15px;
-        padding: 12px;
+        padding: 0 12px;
     }
 
     .ul_list {
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 16px;
         padding: 16px;
     }
 
@@ -301,21 +217,73 @@ button:hover{
         justify-content: space-between;
     }
 
+    .btn_d,
+    .btn_e,
+    .add-button,
+    .open,
+    .close,
+    .user-action-edit,
+    .user-action-delete {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px;
+    }
     .delete_td {
         flex-direction: column;
         width: 100%;
     }
 
-    .vaqt,
-    .ism,
-    .sana,
-    .id {
-        font-size: 16px;   /* → Yozuvlar kattalashdi */
-        padding: 8px 12px;
+    .open{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
     }
 
-    .user-input{
-        font-size: 16px;
-        padding: 15px;
+    .ism, .vaqt, .sana, .id {
+        font-weight: 400;
+        font-size: 24px;
+        padding: 5px 10px;
+    }
+}
+
+
+/* ============================
+      RESPONSIVE 480px
+============================ */
+@media (max-width: 480px) {
+
+    th, td {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+      .delete_td {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .ul_list {
+        gap: 14px;
+        padding: 14px;
+    }
+
+    .ism, .vaqt, .sana, .id {
+        font-weight: 400;
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+
+    .add-button,
+    .open,
+    .close,
+    .btn_d,
+    .btn_e {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .ism , .vaqt, .sana, .id {
+        font-size: 20px;
     }
 }

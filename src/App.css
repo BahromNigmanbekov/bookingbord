@@ -1,4 +1,5 @@
 main{
+    background-color: #0d1117;
     display: flex;
     flex-direction: row;
 }
