@@ -1,6 +1,5 @@
-/* ===========================
-      LOGIN PAGE STYLES
-=========================== */
+
+
 
 .login-page {
     display: flex;
@@ -8,7 +7,9 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #0d1117;
+    background: rgba(2, 2, 12, 0.741);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     color: #c9d1d9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -46,22 +47,63 @@
     outline: none;
 }
 
-.login-page button {
-    padding: 14px;
-    border-radius: 8px;
-    border: none;
-    background-color: #238636;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s ease;
+button {
+  --primary-color: #645bff;
+  --secondary-color: #fff;
+  --hover-color: #111;
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 20px;
+  color: var(--secondary-color);
+  padding: 1em 1.8em;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  transition: 0.2s ;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: bold;
 }
 
-.login-page button:hover {
-    background-color: #2ea043;
+button .arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-page p {
-    margin-top: 10px;
-    font-size: 14px;
+button .arrow {
+  margin-top: 1px;
+  width: var(--arrow-width);
+  background: var(--primary-color);
+  height: var(--arrow-stroke);
+  position: relative;
+  transition: 0.2s;
+}
+
+button .arrow::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: solid var(--secondary-color);
+  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+  display: inline-block;
+  top: -3px;
+  right: 3px;
+  transition: 0.2s;
+  padding: 3px;
+  transform: rotate(-45deg);
+}
+
+button:hover {
+  background-color: var(--hover-color);
+}
+
+button:hover .arrow {
+  background: var(--secondary-color);
+}
+
+button:hover .arrow:before {
+  right: 0;
 }

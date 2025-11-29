@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // ✅ router
+import { useNavigate } from 'react-router-dom'; // router
 import "./users.css";
 import { FaCheck } from "react-icons/fa";
 import Modal from '../../components/madal/Modal';
@@ -9,8 +9,10 @@ import { FaUser, FaPlusCircle } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { FaCalendar } from "react-icons/fa";
 import { ImExit } from "react-icons/im";
+import { Button, message, Space } from 'antd';
 
 function Users() {
+
     const navigate = useNavigate();
     const [data , setData] = useState([]);
     const [openMadal , setOpenMadal] = useState(false);
@@ -27,12 +29,11 @@ function Users() {
     const [EditGender , setEditGender] = useState("");
     const [EditBirthDate , setEditBirthDate] = useState("");
 
-    // 🔹 Login himoyasi: sahifa ochilganda tekshirish
+    const [messageApi, contextHolder] = message.useMessage();
+
     useEffect(() => {
         const loggedIn = localStorage.getItem("loggedIn");
-        if (!loggedIn) {
-            navigate("/"); // login qilmagan bo'lsa → login page
-        }
+        if (!loggedIn) navigate("/"); 
     }, [navigate]);
 
     useEffect(() => {
@@ -41,17 +42,34 @@ function Users() {
         });
     }, []);
 
-    // 🔹 Logout funksiyasi
     const handleLogout = () => {
         localStorage.removeItem("loggedIn");
         navigate("/");
     }
 
-    const handleDelete = (id) => {
+       const handleDelete = (id) => {
         deleteUsers(id).then(res => {
-            res ? getUsers().then(res => setData(res)) : []
+            success('User checked successfully');
+            if (res) getUsers().then(res => setData(res));
         })
+        .catch(err => {
+            error('Failed to check user');
+        });
     }
+
+
+     const success = (text) => {
+    messageApi.open({
+      type: 'success',
+      content: 'User checked successfully',
+    });
+  };
+  const error = (text) => {
+    messageApi.open({
+      type: 'error',
+      content: 'User not checked successfully',
+    });
+  };
 
     const handleEditSumbmit = (event) => {
         event.preventDefault();
@@ -65,77 +83,56 @@ function Users() {
 
         putUsers(editUserId, updatedUsers).then((res) => {
             if (res) getUsers().then((res) => setData(res));
+            setOpenEditMadal(false);
         });
     }
 
     const renderData = (data) => {
         return data?.map((user, index) => (
             <ul className='ul_list' key={user.id}>
-                <div className='id'>Id : {index + 1}</div>
-                
+
+               
+
                 <div className='user_card'>
                     <span className='user_ic'><FaUser /></span>
-                    <p className='ism'>
-                        {user.name} {user.lastName}
-                    </p>
+                    <p className='ism'>{user.name}</p>
                 </div>
-                
+
                 <div className='time_card'>
-                    <span className='time_ic'> <IoTime /></span>
+                    <span className='time_ic'><IoTime /></span>
                     <p className='vaqt'>{user.age}</p>
                 </div>
-                
+
                 <p>{user.gender}</p>
-                
+
                 <div className='date_card'>
-                    <span className='date_ic' ><FaCalendar /></span>
+                    <span className='date_ic'><FaCalendar /></span>
                     <p className='sana'>{user.birthDate}</p>
                 </div>
 
                 <div className='delete_td'>
-                    <button className='btn_d' onClick={()=> handleDelete(user.id)}>Checked<FaCheck /></button>
-                    <button className='btn_e' onClick={()=> {
-                        setEditUserId(user.id);
-                        setOpenEditMadal(true);
-                        } }>Edit User<MdEdit />
+                    <button className='btn_d' onClick={() => handleDelete(user.id)}>
+                        Checked <FaCheck />
+                    </button>
+
+                    <button
+                        className='btn_e'
+                        onClick={() => {
+                            setEditUserId(user.id);
+                            setEditName(user.name);
+                            setEditAge(user.age);
+                            setEditBirthDate(user.birthDate);
+                            setOpenEditMadal(true);
+                        }}
+                    >
+                        Edit User <MdEdit />
                     </button>
                 </div>
 
-                <div className='edit_td'>
-                    <Modal isOpen={openEditnMadal} setIsOpen={setOpenEditMadal} >
-                        <form action="" onSubmit={handleEditSumbmit} className='form-user'>
-                            <input
-                                onChange={(event) => setEditName(event.target.value)}
-                                value={EditName} 
-                                type="text" 
-                                placeholder='edit a name'  
-                                className='user-input'
-                                required
-                            />
-                            <input
-                                onChange={(event) => setEditAge(event.target.value)}
-                                value={EditAge}
-                                type="time"
-                                placeholder='edit time'
-                                className='user-input'
-                                required
-                            />
-                            <input
-                                onChange={(event) => setEditBirthDate(event.target.value)}
-                                value={EditBirthDate}
-                                type="date"
-                                placeholder='edit date'
-                                className='user-input'
-                                required
-                            />
-                            <br />
-                            <button type="submit" className='edi_user'>edit user</button>
-                        </form>
-                    </Modal>
-                </div>
             </ul>
-        ))
-    }
+        ));
+    };
+
 
     const handlSubmit = (e) => {
         e.preventDefault();
@@ -149,20 +146,26 @@ function Users() {
 
     return (
         <>
+            {contextHolder}
             <section className='users'>
                 <div className="">
                     <div className="just_btn">
-                        <button onClick={()=> setOpenMadal(true)} className='open'>Add User <FaPlusCircle /></button>
-                        <button onClick={handleLogout} className='logout-btn'>Exit <ImExit /></button>
+                        <button onClick={()=> setOpenMadal(true)} className='open'>
+                            Add User <FaPlusCircle />
+                        </button>
+                        <button onClick={handleLogout} className='logout-btn'>
+                            Exit <ImExit />
+                        </button>
                     </div>
 
-                    <Modal isOpen ={openMadal} setIsOpen={setOpenMadal}>
+                    {/* ADD USER MODAL */}
+                    <Modal isOpen={openMadal} setIsOpen={setOpenMadal}>
                         <form onSubmit={handlSubmit} className='form-user'>
                             <input
                                 onChange={(event) => setName(event.target.value)}
-                                value={name} 
-                                type="text" 
-                                placeholder='enter a name'  
+                                value={name}
+                                type="text"
+                                placeholder='enter a name'
                                 className='user-input'
                                 required
                             />
@@ -186,11 +189,47 @@ function Users() {
                             <button type='submit' className='add-button'>add user</button>
                         </form>
                     </Modal>
+
                 </div>
-                
+
+                {/* 🟡 EDIT USER MODAL — to‘g‘ri joyi shu */}
+                <Modal isOpen={openEditnMadal} setIsOpen={setOpenEditMadal}>
+                    <form onSubmit={handleEditSumbmit} className='form-user'>
+
+                        <input
+                            onChange={(e) => setEditName(e.target.value)}
+                            value={EditName}
+                            type="text"
+                            placeholder='edit name'
+                            className='user-input'
+                            required
+                        />
+
+                        <input
+                            onChange={(e) => setEditAge(e.target.value)}
+                            value={EditAge}
+                            type="time"
+                            placeholder='edit time'
+                            className='user-input'
+                            required
+                        />
+
+                        <input
+                            onChange={(e) => setEditBirthDate(e.target.value)}
+                            value={EditBirthDate}
+                            type="date"
+                            placeholder='edit date'
+                            className='user-input'
+                            required
+                        />
+
+                        <button type='submit' className='edi_user'>edit user</button>
+                    </form>
+                </Modal>
+
                 <div>
                     <ul>
-                        {renderData(data)}    
+                        {renderData(data)}
                     </ul>
                 </div>
             </section>

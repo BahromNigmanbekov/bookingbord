@@ -4,7 +4,7 @@ function Header() {
   return (
     <>
       <header>
-        <h1>Bookingbord</h1>
+        <h1>Bookingboard</h1>
       </header>
     </>
   )

@@ -5,8 +5,11 @@
     transform: translate(50%,-50%);
     max-width: 52%;
     max-height: 90%;
-    background-color: #fff;
-    border: 1px solid transparent;
+     background: rgba(0, 0, 0, 0.945);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
     border-radius: 33px;
     z-index: 1000;
     padding: 50px;

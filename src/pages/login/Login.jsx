@@ -7,22 +7,22 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // 🔹 Persistent login tekshiruvi
+
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
     if (loggedIn) {
-      navigate("/users"); // foydalanuvchi allaqachon login qilgan bo‘lsa
+      navigate("/users"); 
     }
   }, [navigate]);
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const correctPassword = "1988"; // test parol
+    const correctPassword = "1988"; 
 
     if (password === correctPassword) {
-      localStorage.setItem("loggedIn", true); // ✅ login holatini saqlash
-      navigate("/users"); // Users.jsx ga yo‘naltirish
+      localStorage.setItem("loggedIn", true); 
+      navigate("/users"); 
     } else {
       setError("❌ Parol noto‘g‘ri! Qayta urinib ko‘ring.");
     }
@@ -40,7 +40,14 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">Kirish</button>
+<button type="submit">
+
+    Login up
+    <div class="arrow-wrapper">
+        <div class="arrow"></div>
+
+    </div>
+</button>
       </form>
 
       {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
